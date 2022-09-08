@@ -51,7 +51,7 @@ func Provider(version string) func() *schema.Provider {
 					Description: "URL of the API Gateway to use. It is intended for development purposes only.",
 					Type:        schema.TypeString,
 					Optional:    true,
-					Default:     api.DEFAULT_API_GATEWAY,
+					Default:     schema.EnvDefaultFunc("HOPSWORKSAI_DEFAULT_API_GATEWAY", api.DEFAULT_API_GATEWAY),
 					ValidateDiagFunc: func(v interface{}, path cty.Path) diag.Diagnostics {
 						value := v.(string)
 						var diagnostics diag.Diagnostics
